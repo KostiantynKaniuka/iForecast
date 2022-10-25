@@ -12,7 +12,7 @@
 		E74B28F0290808C400094697 /* iForeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28EF290808C400094697 /* iForeCastViewController.swift */; };
 		E74B28F5290808C500094697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74B28F4290808C500094697 /* Assets.xcassets */; };
 		E74B28F8290808C500094697 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74B28F6290808C500094697 /* LaunchScreen.storyboard */; };
-		E74B2901290817C300094697 /* CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B2900290817C300094697 /* CAGradientLayer.swift */; };
+		E74B2901290817C300094697 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B2900290817C300094697 /* Gradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		E74B28F4290808C500094697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E74B28F7290808C500094697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E74B28F9290808C500094697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E74B2900290817C300094697 /* CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayer.swift; sourceTree = "<group>"; };
+		E74B2900290817C300094697 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 				E74B28F9290808C500094697 /* Info.plist */,
 				E74B28FF2908178600094697 /* Files */,
 				E74B28EF290808C400094697 /* iForeCastViewController.swift */,
-				E74B2900290817C300094697 /* CAGradientLayer.swift */,
+				E74B2900290817C300094697 /* Gradient.swift */,
 			);
 			path = iForecast;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 				E74B28F0290808C400094697 /* iForeCastViewController.swift in Sources */,
 				E74B28EC290808C400094697 /* AppDelegate.swift in Sources */,
 				E74B28EE290808C400094697 /* SceneDelegate.swift in Sources */,
-				E74B2901290817C300094697 /* CAGradientLayer.swift in Sources */,
+				E74B2901290817C300094697 /* Gradient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
