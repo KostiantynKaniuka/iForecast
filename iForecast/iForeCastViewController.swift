@@ -14,14 +14,17 @@ final class iForeCastViewController: UIViewController {
         setUpViews()
     }
     
-    func setUpViews() {
+    private func setUpViews() {
         let backgroundColorView = Gradient()
-        let topLocatorArea = LocationArea()
+        let topLocatorArea = LocationSection()
+        let temperatureArea = TemperatureSection()
         backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
         topLocatorArea.translatesAutoresizingMaskIntoConstraints = false
         
+        
         view.addSubview(backgroundColorView)
         view.addSubview(topLocatorArea)
+        view.addSubview(temperatureArea)
         
         NSLayoutConstraint.activate([
             backgroundColorView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -30,7 +33,10 @@ final class iForeCastViewController: UIViewController {
             backgroundColorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             topLocatorArea.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            topLocatorArea.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            topLocatorArea.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            temperatureArea.topAnchor.constraint(equalTo: topLocatorArea.bottomAnchor),
+            temperatureArea.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
     }

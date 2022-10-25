@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocationArea: UIView {
+class LocationSection: UIView {
 
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -20,8 +20,10 @@ class LocationArea: UIView {
    
     private func setUpViews() {
         let topImage = makeImageView()
-        let cityNameLabel = makeLabel(withText: "London", size: 37)
+        let cityNameLabel = makeLabel(withText: "London", fontSize: 37)
         let locationButton = makeButton(withText: "Turn on location services")
+        locationButton.frame.size = CGSize(width: 218, height: 42)
+       
         topImage.translatesAutoresizingMaskIntoConstraints = false
         addSubview(topImage)
         addSubview(cityNameLabel)
@@ -39,5 +41,8 @@ class LocationArea: UIView {
             locationButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
-
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 190)
+    }
 }
