@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		E74B28EC290808C400094697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28EB290808C400094697 /* AppDelegate.swift */; };
 		E74B28EE290808C400094697 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28ED290808C400094697 /* SceneDelegate.swift */; };
-		E74B28F0290808C400094697 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28EF290808C400094697 /* ViewController.swift */; };
+		E74B28F0290808C400094697 /* iForeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28EF290808C400094697 /* iForeCastViewController.swift */; };
 		E74B28F5290808C500094697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74B28F4290808C500094697 /* Assets.xcassets */; };
 		E74B28F8290808C500094697 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74B28F6290808C500094697 /* LaunchScreen.storyboard */; };
+		E74B2901290817C300094697 /* CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B2900290817C300094697 /* CAGradientLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E74B28E8290808C400094697 /* iForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74B28EB290808C400094697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E74B28ED290808C400094697 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E74B28EF290808C400094697 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E74B28EF290808C400094697 /* iForeCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iForeCastViewController.swift; sourceTree = "<group>"; };
 		E74B28F4290808C500094697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E74B28F7290808C500094697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E74B28F9290808C500094697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E74B2900290817C300094697 /* CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		E74B28EA290808C400094697 /* iForecast */ = {
 			isa = PBXGroup;
 			children = (
-				E74B28EB290808C400094697 /* AppDelegate.swift */,
-				E74B28ED290808C400094697 /* SceneDelegate.swift */,
-				E74B28EF290808C400094697 /* ViewController.swift */,
-				E74B28F4290808C500094697 /* Assets.xcassets */,
-				E74B28F6290808C500094697 /* LaunchScreen.storyboard */,
 				E74B28F9290808C500094697 /* Info.plist */,
+				E74B28FF2908178600094697 /* Files */,
+				E74B28EF290808C400094697 /* iForeCastViewController.swift */,
+				E74B2900290817C300094697 /* CAGradientLayer.swift */,
 			);
 			path = iForecast;
+			sourceTree = "<group>";
+		};
+		E74B28FF2908178600094697 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				E74B28EB290808C400094697 /* AppDelegate.swift */,
+				E74B28ED290808C400094697 /* SceneDelegate.swift */,
+				E74B28F4290808C500094697 /* Assets.xcassets */,
+				E74B28F6290808C500094697 /* LaunchScreen.storyboard */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E74B28F0290808C400094697 /* ViewController.swift in Sources */,
+				E74B28F0290808C400094697 /* iForeCastViewController.swift in Sources */,
 				E74B28EC290808C400094697 /* AppDelegate.swift in Sources */,
 				E74B28EE290808C400094697 /* SceneDelegate.swift in Sources */,
+				E74B2901290817C300094697 /* CAGradientLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
