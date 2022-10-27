@@ -23,8 +23,8 @@ class Gradient: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = self.bounds
-        
     }
+    
     private func setUpGradient() {
         self.layer.addSublayer(gradientLayer)
         gradientLayer.colors = [

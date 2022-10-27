@@ -37,16 +37,15 @@ class TemperatureSection: UIView {
             temperatureSymbolLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 1),
             temperatureSymbolLabel.topAnchor.constraint(equalTo: topAnchor),
             
-            environmentLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 15),
+            environmentLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
             environmentLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            AQIbutton.topAnchor.constraint(equalTo: environmentLabel.bottomAnchor, constant: 15),
+            AQIbutton.topAnchor.constraint(equalTo: environmentLabel.bottomAnchor, constant: 30),
             AQIbutton.centerXAnchor.constraint(equalTo: centerXAnchor)
-           
         ])
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 190)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 350)
     }
 }

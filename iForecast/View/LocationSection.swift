@@ -19,7 +19,7 @@ class LocationSection: UIView {
     }
    
     private func setUpViews() {
-        let topImage = makeImageView()
+        let topImage = makeImageView(name: "locator", symbol: false)
         let cityNameLabel = makeLabel(withText: "London", fontSize: 37)
         let locationButton = makeButton(withText: "Turn on location services")
         locationButton.frame.size = CGSize(width: 218, height: 42)

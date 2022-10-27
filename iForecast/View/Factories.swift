@@ -7,10 +7,28 @@
 
 import UIKit
 
-func makeImageView() -> UIImageView {
-    let image = UIImage(named: "locator")
-    let imageView = UIImageView(image: image)
-    
+func makeStackView(withOrientation axis: NSLayoutConstraint.Axis) -> UIStackView {
+    let stackView = UIStackView()
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.axis = axis
+    stackView.distribution = .fill
+    stackView.alignment = .fill
+    stackView.spacing = 8.0
+
+    return stackView
+}
+
+func makeImageView(name: String, symbol: Bool) -> UIImageView {
+    var imageView = UIImageView()
+    if symbol == true {
+        let image = UIImage(systemName: name)
+         imageView = UIImageView(image: image)
+        
+    } else {
+        let image = UIImage(named: name)
+         imageView = UIImageView(image: image)
+    }
+    imageView.translatesAutoresizingMaskIntoConstraints = false
     return imageView
 }
 
