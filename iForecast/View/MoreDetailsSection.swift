@@ -19,12 +19,15 @@ class MoreDetailsSection: UIView {
     }
     
     private func setUpViews() {
-        let todayWeatherIcon = makeImageView(name: "sun.fill", symbol: true)
-        let moreDetailsLabel = makeLabel(withText: "More Details>", fontSize: 14)
         
+        let todayWeatherIcon = UIImageView()
+        todayWeatherIcon.image = UIImage(systemName: "cloud.sun")
+        todayWeatherIcon.translatesAutoresizingMaskIntoConstraints = false
+        let moreDetailsLabel = makeLabel(withText: "More Details>", fontSize: 14)
+       
         addSubview(moreDetailsLabel)
         addSubview(todayWeatherIcon)
-        addSubview(todayWeatherIcon)
+    
         
         NSLayoutConstraint.activate([
             moreDetailsLabel.topAnchor.constraint(equalTo: topAnchor),

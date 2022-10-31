@@ -8,33 +8,62 @@
 import UIKit
 
 class LocationSection: UIView {
-
+    
+    let topImageView = UIImageView()
+    let cityNameLabel = UILabel()
+    let locationButton = UIButton()
+    
     override init(frame: CGRect) {
         super.init(frame:frame)
-       setUpViews()
+        style()
+        layout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-   
-    private func setUpViews() {
-        let topImage = makeImageView(name: "locator", symbol: false)
-        let cityNameLabel = makeLabel(withText: "London", fontSize: 37)
-        let locationButton = makeButton(withText: "Turn on location services")
+    
+    private func style() {
+        topImageView.image = UIImage(named: "Locator")
+        
+        //Label
+        cityNameLabel.text = "London"
+        cityNameLabel.textAlignment = .center
+        cityNameLabel.numberOfLines = 0
+        cityNameLabel.textColor = .white
+        cityNameLabel.font = UIFont.boldSystemFont(ofSize: 37)
+        
+        //Button
         locationButton.frame.size = CGSize(width: 218, height: 42)
-       
-        topImage.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(topImage)
+        let attributedText = NSMutableAttributedString(string: "Turn on location services", attributes: [
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.kern: 1
+        ])
+        var config = UIButton.Configuration.filled()
+        locationButton.translatesAutoresizingMaskIntoConstraints = false
+        config.baseBackgroundColor = .yellowButton
+        config.cornerStyle = .capsule
+        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+        locationButton.configuration = config
+        locationButton.setAttributedTitle(attributedText, for: .normal)
+    }
+    
+    private func layout() {
+        topImageView.translatesAutoresizingMaskIntoConstraints = false
+        cityNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(topImageView)
         addSubview(cityNameLabel)
         addSubview(locationButton)
         
         NSLayoutConstraint.activate([
-            topImage.topAnchor.constraint(equalTo: topAnchor),
-            topImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            topImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topImageView.topAnchor.constraint(equalTo: topAnchor),
+            topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            cityNameLabel.topAnchor.constraint(equalTo: topImage.bottomAnchor, constant: 7),
+            cityNameLabel.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 7),
             cityNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             locationButton.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor, constant: 12),

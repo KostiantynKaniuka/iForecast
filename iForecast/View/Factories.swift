@@ -18,17 +18,12 @@ func makeStackView(withOrientation axis: NSLayoutConstraint.Axis) -> UIStackView
     return stackView
 }
 
-func makeImageView(name: String, symbol: Bool) -> UIImageView {
-    var imageView = UIImageView()
-    if symbol == true {
-        let image = UIImage(systemName: name)
-         imageView = UIImageView(image: image)
-        
-    } else {
-        let image = UIImage(named: name)
-         imageView = UIImageView(image: image)
-    }
+func makeImageView(name: String) -> UIImageView {
+    let imageView = UIImageView()
+    let image = UIImage(named: name)
+    imageView.image = image
     imageView.translatesAutoresizingMaskIntoConstraints = false
+    
     return imageView
 }
 
