@@ -8,13 +8,7 @@ import UIKit
 
 class DetailView: UIView {
     
-    
     private let dayIcon = UIImageView()
-    private let dayOfWeekLabel = UILabel()
-    private let weatherConditionLabel = UILabel()
-    private let minTempLabel = UILabel()
-    private let maxTempLabel = UILabel()
-    
     private var dayImage: UIImage
     private var dayOfWeek: String
     private var weatherCondition: String
@@ -30,7 +24,6 @@ class DetailView: UIView {
         self.maxTemperature = maxTemperature
         self.minTemperature = minTemperature
         super.init(frame: frame)
-        style()
         layout()
     }
     
@@ -39,7 +32,7 @@ class DetailView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 20)
+        return CGSize(width: 350, height: 20)
     }
 }
 
@@ -54,36 +47,42 @@ extension DetailView {
         label.textColor = .white
         return label
     }
-    
-    private func style() {
-        //Icon
-        dayIcon.image = dayImage
-        
-        //DayOfweekLabel
-       makeSectionLabel(withText: dayOfWeek)
-        
-        //WeathetConditionLabel
-        weatherConditionLabel.text = dayOfWeek
-        weatherConditionLabel.font = UIFont(name: "Cabin-Bold", size: 16)
-        weatherConditionLabel.numberOfLines = 0
-        weatherConditionLabel.textAlignment = .center
-        weatherConditionLabel.textColor = .white
-        
-        //maxTempLabel
-        maxTempLabel.text = dayOfWeek
-        maxTempLabel.font = UIFont(name: "Cabin-Bold", size: 16)
-        maxTempLabel.numberOfLines = 0
-        maxTempLabel.textAlignment = .center
-        maxTempLabel.textColor = .white
-        
-        
-        
-        
-        
-        
-    }
-    
+
     private func layout() {
-        translatesAutoresizingMaskIntoConstraints = false
+        let dayOfWeekLabel = makeSectionLabel(withText: dayOfWeek)
+        let weatherConditionLabel = makeSectionLabel(withText: weatherCondition)
+        let minTempLabel = makeSectionLabel(withText: minTemperature)
+        let maxTempLabel = makeSectionLabel(withText: maxTemperature)
+        
+        dayIcon.translatesAutoresizingMaskIntoConstraints = false
+        dayIcon.image = dayImage
+        dayIcon.tintColor = UIColor.white
+        dayOfWeekLabel.translatesAutoresizingMaskIntoConstraints = false
+        weatherConditionLabel.translatesAutoresizingMaskIntoConstraints = false
+        minTempLabel.translatesAutoresizingMaskIntoConstraints = false
+        maxTempLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(dayIcon)
+        addSubview(dayOfWeekLabel)
+        addSubview(weatherConditionLabel)
+        addSubview(maxTempLabel)
+        addSubview(minTempLabel)
+        
+        NSLayoutConstraint.activate([
+            dayIcon.topAnchor.constraint(equalTo: topAnchor),
+            dayIcon.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            dayOfWeekLabel.centerYAnchor.constraint(equalTo: dayIcon.centerYAnchor),
+            dayOfWeekLabel.leadingAnchor.constraint(equalTo: dayIcon.trailingAnchor, constant: 10),
+            
+            weatherConditionLabel.centerYAnchor.constraint(equalTo: dayIcon.centerYAnchor),
+            weatherConditionLabel.leadingAnchor.constraint(equalTo: dayOfWeekLabel.trailingAnchor),
+        
+            minTempLabel.centerYAnchor.constraint(equalTo: dayIcon.centerYAnchor),
+            minTempLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            maxTempLabel.centerYAnchor.constraint(equalTo: dayIcon.centerYAnchor),
+            maxTempLabel.trailingAnchor.constraint(equalTo: minTempLabel.leadingAnchor)
+        ])
     }
 }

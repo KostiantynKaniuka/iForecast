@@ -8,11 +8,7 @@
 import UIKit
 
 class MoreDetailsSection: UIView {
-    
-    let todayWeatherIcon = UIImageView()
-    let tomorrowWeatherIcon = UIImageView()
-    let otherWeatherDayIcon = UIImageView()
-    
+
     override init(frame: CGRect) {
         super.init(frame:frame)
         style()
@@ -21,10 +17,6 @@ class MoreDetailsSection: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 350)
     }
 }
 
@@ -35,6 +27,20 @@ extension MoreDetailsSection {
     }
     
     private func layout() {
+        let todaySection = DetailView(frame: .zero,
+                                      dayImage: UIImage(systemName: "sun.max.fill")!,
+                                      dayOfWeek: "Today",
+                                      weatherCondition: " · Thunderstorm",
+                                      maxTemperature: "29° ",
+                                      minTemperature: "/ 25°")
+        todaySection.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(todaySection)
+        
+        NSLayoutConstraint.activate([
+            todaySection.centerYAnchor.constraint(equalTo: centerYAnchor),
+            todaySection.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
       
     }
 }
