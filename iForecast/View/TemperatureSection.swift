@@ -19,6 +19,7 @@ class TemperatureSection: UIView {
     }
     private func setUpViews() {
         let temperatureLabel = makeLabel(withText: "27", fontSize: 161)
+        temperatureLabel.font = UIFont(name: "Cabin-Bold", size: 161)
         let temperatureSymbolLabel = makeLabel(withText: "°C", fontSize: 40)
         let environmentLabel = makeLabel(withText: "Cloudy", fontSize: 34)
         let AQIbutton = makeAQIbutton(withText: "  AQI 14")

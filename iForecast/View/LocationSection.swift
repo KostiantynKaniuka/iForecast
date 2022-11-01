@@ -31,7 +31,7 @@ class LocationSection: UIView {
         cityNameLabel.textAlignment = .center
         cityNameLabel.numberOfLines = 0
         cityNameLabel.textColor = .white
-        cityNameLabel.font = UIFont.boldSystemFont(ofSize: 37)
+        cityNameLabel.font = UIFont(name: "Cabin-Bold", size: 37)
         
         //Button
         locationButton.frame.size = CGSize(width: 218, height: 42)

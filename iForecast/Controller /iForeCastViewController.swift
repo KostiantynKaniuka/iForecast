@@ -42,7 +42,7 @@ final class iForeCastViewController: UIViewController {
             temperatureArea.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             bottomArea.topAnchor.constraint(equalTo: temperatureArea.bottomAnchor),
-            bottomArea.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            bottomArea.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1)
             
          
             

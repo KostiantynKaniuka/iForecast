@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72A81172911714200ECD25B /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E72A81162911714200ECD25B /* Cabin-Bold.ttf */; };
+		E72A811B29117EC300ECD25B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72A811A29117EC300ECD25B /* DetailView.swift */; };
 		E74B28EC290808C400094697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28EB290808C400094697 /* AppDelegate.swift */; };
-		E74B28EE290808C400094697 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28ED290808C400094697 /* SceneDelegate.swift */; };
 		E74B28F0290808C400094697 /* iForeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74B28EF290808C400094697 /* iForeCastViewController.swift */; };
 		E74B28F5290808C500094697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74B28F4290808C500094697 /* Assets.xcassets */; };
 		E74B28F8290808C500094697 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74B28F6290808C500094697 /* LaunchScreen.storyboard */; };
@@ -20,9 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E72A81162911714200ECD25B /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
+		E72A811A29117EC300ECD25B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E74B28E8290808C400094697 /* iForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74B28EB290808C400094697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E74B28ED290808C400094697 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E74B28EF290808C400094697 /* iForeCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iForeCastViewController.swift; sourceTree = "<group>"; };
 		E74B28F4290808C500094697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E74B28F7290808C500094697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +47,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E72A811529116F7800ECD25B /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				E74B28EB290808C400094697 /* AppDelegate.swift */,
+				E74B28F4290808C500094697 /* Assets.xcassets */,
+				E74B28F6290808C500094697 /* LaunchScreen.storyboard */,
+				E74B28F9290808C500094697 /* Info.plist */,
+			);
+			name = Files;
+			sourceTree = "<group>";
+		};
+		E72A8119291173D000ECD25B /* Fonts  */ = {
+			isa = PBXGroup;
+			children = (
+				E72A81162911714200ECD25B /* Cabin-Bold.ttf */,
+			);
+			name = "Fonts ";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E72A811C29117EF900ECD25B /* moreDetailsSection */ = {
+			isa = PBXGroup;
+			children = (
+				E756598D290AB346003124C2 /* MoreDetailsSection.swift */,
+				E72A811A29117EC300ECD25B /* DetailView.swift */,
+			);
+			path = moreDetailsSection;
+			sourceTree = "<group>";
+		};
 		E74B28DF290808C400094697 = {
 			isa = PBXGroup;
 			children = (
@@ -64,23 +95,12 @@
 		E74B28EA290808C400094697 /* iForecast */ = {
 			isa = PBXGroup;
 			children = (
-				E74B28FF2908178600094697 /* Files */,
-				E74B28F9290808C500094697 /* Info.plist */,
+				E72A8119291173D000ECD25B /* Fonts  */,
+				E72A811529116F7800ECD25B /* Files */,
 				E756598C290AB299003124C2 /* Controller  */,
 				E7A7A335290996350092F287 /* View */,
 			);
 			path = iForecast;
-			sourceTree = "<group>";
-		};
-		E74B28FF2908178600094697 /* Files */ = {
-			isa = PBXGroup;
-			children = (
-				E74B28EB290808C400094697 /* AppDelegate.swift */,
-				E74B28ED290808C400094697 /* SceneDelegate.swift */,
-				E74B28F4290808C500094697 /* Assets.xcassets */,
-				E74B28F6290808C500094697 /* LaunchScreen.storyboard */,
-			);
-			path = Files;
 			sourceTree = "<group>";
 		};
 		E756598C290AB299003124C2 /* Controller  */ = {
@@ -97,7 +117,7 @@
 				E74B2900290817C300094697 /* Gradient.swift */,
 				E7F441872908363D006B107F /* LocationSection.swift */,
 				E7F4418B29084A85006B107F /* TemperatureSection.swift */,
-				E756598D290AB346003124C2 /* MoreDetailsSection.swift */,
+				E72A811C29117EF900ECD25B /* moreDetailsSection */,
 				E7F4418929083669006B107F /* Factories.swift */,
 			);
 			path = View;
@@ -162,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E74B28F8290808C500094697 /* LaunchScreen.storyboard in Resources */,
+				E72A81172911714200ECD25B /* Cabin-Bold.ttf in Resources */,
 				E74B28F5290808C500094697 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,11 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7F4418A29083669006B107F /* Factories.swift in Sources */,
+				E72A811B29117EC300ECD25B /* DetailView.swift in Sources */,
 				E756598E290AB346003124C2 /* MoreDetailsSection.swift in Sources */,
 				E74B28F0290808C400094697 /* iForeCastViewController.swift in Sources */,
 				E74B28EC290808C400094697 /* AppDelegate.swift in Sources */,
 				E7F441882908363D006B107F /* LocationSection.swift in Sources */,
-				E74B28EE290808C400094697 /* SceneDelegate.swift in Sources */,
 				E7F4418C29084A85006B107F /* TemperatureSection.swift in Sources */,
 				E74B2901290817C300094697 /* Gradient.swift in Sources */,
 			);
