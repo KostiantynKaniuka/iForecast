@@ -77,8 +77,4 @@ func makeAQIbutton(withText title: String) -> UIButton {
     return button
 }
 
-    extension UIColor {
-        static let backgroundTop = UIColor(red: 0/255, green: 92/255, blue: 151/255, alpha: 1)
-        static let backgroundBottom = UIColor(red: 54/255, green: 55/255, blue: 149/255, alpha: 1)
-        static let yellowButton = UIColor(red: 255/255, green: 178/255, blue: 0/255, alpha: 1)
-    }
+    

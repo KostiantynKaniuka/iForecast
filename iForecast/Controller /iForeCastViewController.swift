@@ -12,7 +12,17 @@ final class iForeCastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        style()
         setUpViews()
+        
+    }
+    
+    private func style() {
+        firstScreenStack.axis = .vertical
+        firstScreenStack.alignment = .fill
+        firstScreenStack.distribution = .fillProportionally
+        firstScreenStack.spacing = 30
+        
     }
     
     private func setUpViews() {
@@ -20,15 +30,20 @@ final class iForeCastViewController: UIViewController {
         let topLocatorArea = LocationSection()
         let temperatureArea = TemperatureSection()
         let bottomArea = MoreDetailsSection()
-        backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
-        topLocatorArea.translatesAutoresizingMaskIntoConstraints = false
-        bottomArea.translatesAutoresizingMaskIntoConstraints = false
         
+        
+        backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
+        firstScreenStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        firstScreenStack.addArrangedSubview(topLocatorArea)
+        firstScreenStack.addArrangedSubview(temperatureArea)
+        firstScreenStack.addArrangedSubview(bottomArea)
         
         view.addSubview(backgroundColorView)
-        view.addSubview(topLocatorArea)
-        view.addSubview(temperatureArea)
-        view.addSubview(bottomArea)
+        view.addSubview(firstScreenStack)
+        
+        
+        
         
         NSLayoutConstraint.activate([
             backgroundColorView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -36,17 +51,10 @@ final class iForeCastViewController: UIViewController {
             backgroundColorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundColorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            topLocatorArea.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            topLocatorArea.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            temperatureArea.topAnchor.constraint(equalTo: topLocatorArea.bottomAnchor),
-            temperatureArea.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            bottomArea.topAnchor.constraint(equalTo: temperatureArea.bottomAnchor, constant: 10),
-            bottomArea.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: bottomArea.trailingAnchor, multiplier: 1)
-            
-         
+            firstScreenStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            firstScreenStack.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: firstScreenStack.trailingAnchor, multiplier: 1),
+            firstScreenStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
         ])
     }

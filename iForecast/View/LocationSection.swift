@@ -60,8 +60,7 @@ class LocationSection: UIView {
         
         NSLayoutConstraint.activate([
             topImageView.topAnchor.constraint(equalTo: topAnchor),
-            topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             cityNameLabel.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 7),
             cityNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -72,6 +71,6 @@ class LocationSection: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 190)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 120)
     }
 }

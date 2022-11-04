@@ -21,6 +21,10 @@ class MoreDetailsSection: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 200)
+    }
 }
 
 extension MoreDetailsSection {
@@ -31,6 +35,7 @@ extension MoreDetailsSection {
         moreDetailStack.distribution = .fill
         moreDetailStack.alignment = .fill
         moreDetailStack.spacing = 30
+      
         
         //FiveDayButton
         fiveDayButton.frame.size = CGSize(width: 218, height: 42)
@@ -80,10 +85,9 @@ extension MoreDetailsSection {
         addSubview(fiveDayButton)
     
         NSLayoutConstraint.activate([
+            moreDetailStack.topAnchor.constraint(equalTo: topAnchor),
             moreDetailStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            moreDetailStack.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
-            fiveDayButton.topAnchor.constraint(equalTo: moreDetailStack.bottomAnchor, constant: 30),
+            fiveDayButton.topAnchor.constraint(equalTo: moreDetailStack.bottomAnchor, constant: 50),
             fiveDayButton.centerXAnchor.constraint(equalTo: centerXAnchor)
            
         ])
