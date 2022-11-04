@@ -13,24 +13,25 @@ final class iForeCastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
-        setUpViews()
-        
+        layout()
     }
-    
+}
+
+extension iForeCastViewController {
+    //MARK: - Style
     private func style() {
         firstScreenStack.axis = .vertical
         firstScreenStack.alignment = .fill
         firstScreenStack.distribution = .fillProportionally
         firstScreenStack.spacing = 30
-        
     }
     
-    private func setUpViews() {
+    //MARK: - Layout
+    private func layout() {
         let backgroundColorView = Gradient()
         let topLocatorArea = LocationSection()
         let temperatureArea = TemperatureSection()
         let bottomArea = MoreDetailsSection()
-        
         
         backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
         firstScreenStack.translatesAutoresizingMaskIntoConstraints = false
@@ -42,9 +43,6 @@ final class iForeCastViewController: UIViewController {
         view.addSubview(backgroundColorView)
         view.addSubview(firstScreenStack)
         
-        
-        
-        
         NSLayoutConstraint.activate([
             backgroundColorView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundColorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -55,8 +53,6 @@ final class iForeCastViewController: UIViewController {
             firstScreenStack.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: firstScreenStack.trailingAnchor, multiplier: 1),
             firstScreenStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            
         ])
     }
 }
-

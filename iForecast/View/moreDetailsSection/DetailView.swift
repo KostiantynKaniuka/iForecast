@@ -7,7 +7,7 @@
 import UIKit
 
 class DetailView: UIView {
-    
+    //MARK: - Outlets
     private let dayIcon = UIImageView()
     private var dayImage: UIImage
     private var dayOfWeek: String
@@ -48,6 +48,7 @@ extension DetailView {
         return label
     }
     
+    //MARK: - Layout
     private func layout() {
         let dayOfWeekLabel = makeSectionLabel(withText: dayOfWeek)
         let weatherConditionLabel = makeSectionLabel(withText: weatherCondition)

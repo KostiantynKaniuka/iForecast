@@ -11,7 +11,8 @@ class MoreDetailsSection: UIView {
     
     private let moreDetailStack = UIStackView()
     private let fiveDayButton = UIButton()
-
+    private let moreDetailsLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame:frame)
         style()
@@ -28,14 +29,13 @@ class MoreDetailsSection: UIView {
 }
 
 extension MoreDetailsSection {
-
+    //MARK: - Style
     private func style() {
         //StackView
         moreDetailStack.axis = .vertical
         moreDetailStack.distribution = .fill
         moreDetailStack.alignment = .fill
-        moreDetailStack.spacing = 30
-      
+        moreDetailStack.spacing = 20
         
         //FiveDayButton
         fiveDayButton.frame.size = CGSize(width: 218, height: 42)
@@ -51,8 +51,16 @@ extension MoreDetailsSection {
         config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50)
         fiveDayButton.configuration = config
         fiveDayButton.setAttributedTitle(attributedText, for: .normal)
+        
+        //MoreDetailLabel
+        moreDetailsLabel.text = "More details>"
+        moreDetailsLabel.font = UIFont(name: "Cabin-Bold", size: 14)
+        moreDetailsLabel.numberOfLines = 0
+        moreDetailsLabel.textAlignment = .center
+        moreDetailsLabel.textColor = .white
     }
-      
+    
+    //MARK: - Layout
     private func layout() {
         let todaySection = DetailView(frame: .zero,
                                       dayImage: UIImage(systemName: "sun.max.fill")!,
@@ -74,22 +82,26 @@ extension MoreDetailsSection {
                                          maxTemperature: "25°",
                                          minTemperature: "/ 20°")
         
-       
         moreDetailStack.translatesAutoresizingMaskIntoConstraints = false
+        moreDetailsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         moreDetailStack.addArrangedSubview(todaySection)
         moreDetailStack.addArrangedSubview(tommorowSection)
         moreDetailStack.addArrangedSubview(thirdDaySection)
         
+        addSubview(moreDetailsLabel)
         addSubview(moreDetailStack)
         addSubview(fiveDayButton)
-    
+        
         NSLayoutConstraint.activate([
-            moreDetailStack.topAnchor.constraint(equalTo: topAnchor),
+            moreDetailsLabel.topAnchor.constraint(equalTo: topAnchor),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: moreDetailsLabel.trailingAnchor, multiplier: 2),
+            
+            moreDetailStack.topAnchor.constraint(equalTo: moreDetailsLabel.bottomAnchor, constant: 20),
             moreDetailStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
             fiveDayButton.topAnchor.constraint(equalTo: moreDetailStack.bottomAnchor, constant: 50),
             fiveDayButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-           
         ])
     }
 }

@@ -13,6 +13,11 @@ class LocationSection: UIView {
     let cityNameLabel = UILabel()
     let locationButton = UIButton()
     
+    //MARK: - intrinsicContentSize
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 120)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame:frame)
         style()
@@ -22,7 +27,10 @@ class LocationSection: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+}
+
+extension LocationSection {
+    //MARK: - Style
     private func style() {
         topImageView.image = UIImage(named: "Locator")
         
@@ -49,6 +57,7 @@ class LocationSection: UIView {
         locationButton.setAttributedTitle(attributedText, for: .normal)
     }
     
+    //MARK: - Layout
     private func layout() {
         topImageView.translatesAutoresizingMaskIntoConstraints = false
         cityNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,9 +77,5 @@ class LocationSection: UIView {
             locationButton.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor, constant: 12),
             locationButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 120)
     }
 }
