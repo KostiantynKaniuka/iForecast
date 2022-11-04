@@ -50,7 +50,6 @@
 		E72A811529116F7800ECD25B /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				E74B28EB290808C400094697 /* AppDelegate.swift */,
 				E74B28F4290808C500094697 /* Assets.xcassets */,
 				E74B28F6290808C500094697 /* LaunchScreen.storyboard */,
 				E74B28F9290808C500094697 /* Info.plist */,
@@ -95,6 +94,7 @@
 		E74B28EA290808C400094697 /* iForecast */ = {
 			isa = PBXGroup;
 			children = (
+				E74B28EB290808C400094697 /* AppDelegate.swift */,
 				E72A8119291173D000ECD25B /* Fonts  */,
 				E72A811529116F7800ECD25B /* Files */,
 				E756598C290AB299003124C2 /* Controller  */,

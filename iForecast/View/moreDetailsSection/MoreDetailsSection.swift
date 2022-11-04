@@ -8,6 +8,9 @@
 import UIKit
 
 class MoreDetailsSection: UIView {
+    
+    private let moreDetailStack = UIStackView()
+    private let fiveDayButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -23,9 +26,28 @@ class MoreDetailsSection: UIView {
 extension MoreDetailsSection {
 
     private func style() {
-      
+        //StackView
+        moreDetailStack.axis = .vertical
+        moreDetailStack.distribution = .fill
+        moreDetailStack.alignment = .fill
+        moreDetailStack.spacing = 30
+        
+        //FiveDayButton
+        fiveDayButton.frame.size = CGSize(width: 218, height: 42)
+        let attributedText = NSMutableAttributedString(string: "5-day forecast", attributes: [
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 23),
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.kern: 1
+        ])
+        var config = UIButton.Configuration.filled()
+        fiveDayButton.translatesAutoresizingMaskIntoConstraints = false
+        config.baseBackgroundColor = .yellowButton
+        config.cornerStyle = .capsule
+        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50)
+        fiveDayButton.configuration = config
+        fiveDayButton.setAttributedTitle(attributedText, for: .normal)
     }
-    
+      
     private func layout() {
         let todaySection = DetailView(frame: .zero,
                                       dayImage: UIImage(systemName: "sun.max.fill")!,
@@ -33,14 +55,37 @@ extension MoreDetailsSection {
                                       weatherCondition: " · Thunderstorm",
                                       maxTemperature: "29° ",
                                       minTemperature: "/ 25°")
-        todaySection.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(todaySection)
+        let tommorowSection = DetailView(frame: .zero,
+                                         dayImage: UIImage(systemName: "cloud.sun.fill")!,
+                                         dayOfWeek: "Tommorow",
+                                         weatherCondition: " · Cloudy",
+                                         maxTemperature: "30°",
+                                         minTemperature: "/ 25°")
         
+        let thirdDaySection = DetailView(frame: .zero,
+                                         dayImage: UIImage(systemName: "cloud.rain")!,
+                                         dayOfWeek: "Fri", weatherCondition: " · Thunderstorm",
+                                         maxTemperature: "25°",
+                                         minTemperature: "/ 20°")
+        
+       
+        moreDetailStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        moreDetailStack.addArrangedSubview(todaySection)
+        moreDetailStack.addArrangedSubview(tommorowSection)
+        moreDetailStack.addArrangedSubview(thirdDaySection)
+        
+        addSubview(moreDetailStack)
+        addSubview(fiveDayButton)
+    
         NSLayoutConstraint.activate([
-            todaySection.centerYAnchor.constraint(equalTo: centerYAnchor),
-            todaySection.centerXAnchor.constraint(equalTo: centerXAnchor)
+            moreDetailStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            moreDetailStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            fiveDayButton.topAnchor.constraint(equalTo: moreDetailStack.bottomAnchor, constant: 30),
+            fiveDayButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+           
         ])
-      
     }
 }

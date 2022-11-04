@@ -8,6 +8,7 @@
 import UIKit
 
 final class iForeCastViewController: UIViewController {
+    private let firstScreenStack = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

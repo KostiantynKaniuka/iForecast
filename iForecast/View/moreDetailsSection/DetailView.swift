@@ -47,7 +47,7 @@ extension DetailView {
         label.textColor = .white
         return label
     }
-
+    
     private func layout() {
         let dayOfWeekLabel = makeSectionLabel(withText: dayOfWeek)
         let weatherConditionLabel = makeSectionLabel(withText: weatherCondition)
@@ -77,7 +77,7 @@ extension DetailView {
             
             weatherConditionLabel.centerYAnchor.constraint(equalTo: dayIcon.centerYAnchor),
             weatherConditionLabel.leadingAnchor.constraint(equalTo: dayOfWeekLabel.trailingAnchor),
-        
+            
             minTempLabel.centerYAnchor.constraint(equalTo: dayIcon.centerYAnchor),
             minTempLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             
