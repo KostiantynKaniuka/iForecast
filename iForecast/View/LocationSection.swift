@@ -9,9 +9,9 @@ import UIKit
 
 class LocationSection: UIView {
     
-    let topImageView = UIImageView()
-    let cityNameLabel = UILabel()
-    let locationButton = UIButton()
+    private let topImageView = UIImageView()
+    private let cityNameLabel = UILabel()
+    private let locationButton = UIButton()
     
     //MARK: - intrinsicContentSize
     override var intrinsicContentSize: CGSize {
@@ -20,6 +20,7 @@ class LocationSection: UIView {
     
     override init(frame: CGRect) {
         super.init(frame:frame)
+        setup()
         style()
         layout()
     }
@@ -30,6 +31,11 @@ class LocationSection: UIView {
 }
 
 extension LocationSection {
+    //MARK: - Setup
+    private func setup() {
+        locationButton.addTarget(self, action: #selector(locationServicesActivation), for: .primaryActionTriggered)
+    }
+    
     //MARK: - Style
     private func style() {
         topImageView.image = UIImage(named: "Locator")
@@ -78,4 +84,28 @@ extension LocationSection {
             locationButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
+}
+
+//MARK: - Actions
+extension LocationSection {
+    @objc func locationServicesActivation(sender: UIButton) {
+        for _ in 1...10 {
+            animateLocationIcon(duration: 5)
+        }
+    }
+    
+    //animation
+    private func animateLocationIcon(duration: Double) {
+        UIView.animate(withDuration: duration) {
+            self.topImageView.transform = CGAffineTransform(rotationAngle: .pi)
+        }
+        UIView.animate(
+            withDuration: duration,
+            delay: 0.0,
+            options: UIView.AnimationOptions.curveEaseIn
+        ) {
+            self.topImageView.transform = CGAffineTransform(rotationAngle: 2 * .pi)
+        }
+    }
+    
 }
