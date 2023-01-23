@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .black
         window?.makeKeyAndVisible()
         window?.rootViewController = iForeCastViewController()
-        
         return true
     }
 }
