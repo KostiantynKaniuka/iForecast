@@ -14,14 +14,36 @@ protocol WeatherServiceDelegate: AnyObject {
 
 struct WeatherService {
     weak var delegate: WeatherServiceDelegate?
-        
+    let weatherURL = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=1fb28699574c10cef2caafcbea3d4929&units=metric")!
+  
+    
     func fetchWeather(cityName: String) {
-        let weatherModel = WeatherModel(conditionId: 700, cityName: cityName, temperature: -10)
-        delegate?.didFetchWeather(self, weatherModel)
+        let stringURL = "\(weatherURL)&q=\(cityName)"
+        performRequest(with: stringURL)
     }
     
-    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let weatherModel = WeatherModel(conditionId: 800, cityName: "Paris", temperature: 25)
-        delegate?.didFetchWeather(self, weatherModel)
-    }
+    func performRequest(with urlString: String) {
+        let weatherURL = URL(string: urlString)
+        let url = URL(string: urlString)!
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                            
+                if let safeData = data {
+                    if let weather = self.parseJSON(safeData) {
+                        DispatchQueue.main.async {
+                            self.delegate?.didFetchWeather(self, weather)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    
+    private func parseJSON(_ weatherData: Data) -> WeatherModel? {
+          let decodedData = try! JSONDecoder().decode(WeatherData.self, from: weatherData)
+          let id = decodedData.weather[0].id
+          let temp = decodedData.main.temp
+          let name = decodedData.name
+          let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+          return weather
+      }
 }

@@ -15,7 +15,26 @@ struct WeatherModel {
     var temperatureString: String {
         return String(format: "%.0f", temperature)
     }
-    
+    var enviromentName: String {
+        switch conditionId {
+        case 200...232:
+            return "Cloudy"
+        case 300...321:
+            return "Drizzle"
+        case 500...531:
+            return "Rain"
+        case 600...622:
+            return "Snow"
+        case 701...781:
+            return "Fog"
+        case 800:
+            return "Sunny"
+        case 801...804:
+            return "Thunder"
+        default:
+            return "Cloud"
+        }
+    }
     var conditionName: String {
         switch conditionId {
         case 200...232:
