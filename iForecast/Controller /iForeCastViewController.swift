@@ -1,5 +1,5 @@
 //
-//  LocationArea.swift
+//  iForeCastViewController.swift
 //  iForecast
 //
 //  Created by Kostiantyn Kaniuka on 25.10.2022.
@@ -10,10 +10,15 @@ import CoreLocation
 
 final class iForeCastViewController: UIViewController {
     
-    private let topImageView = UIImageView()
+    private let locationImageView = UIImageView()
     private let cityNameTextField = UITextField()
     private let locationButton = UIButton()
     private let locationManager = CLLocationManager()
+    private let temperatureLabel = UILabel()
+    private let celsiusSymbolLabel = UILabel()
+    private let environmentLabel = UILabel()
+    private let topStackView = UIStackView()
+    private let backgroundView = Gradient()
     var weatherService = WeatherService()
 
     override func viewDidLoad() {
@@ -37,8 +42,12 @@ extension iForeCastViewController {
     
     //MARK: - Style
     private func style() {
-        topImageView.image = UIImage(named: "Locator")
-        
+        locationImageView.image = UIImage(named: "Locator")
+        //StackView
+        topStackView.axis = .vertical
+        topStackView.alignment = .fill
+        topStackView.distribution = .fillProportionally
+        topStackView.spacing = 20
         //TextField
         cityNameTextField.backgroundColor = UIColor.init(white: 0.3, alpha: 0.4)
         cityNameTextField.textColor = .white
@@ -50,6 +59,24 @@ extension iForeCastViewController {
         cityNameTextField.setLeftPaddingPoints(10)
         cityNameTextField.textAlignment = .center
         cityNameTextField.layer.shadowRadius = 3.0
+        //TemperatureLabel
+        temperatureLabel.text = "27"
+        temperatureLabel.font = UIFont(name: "Cabin-Bold", size: 161)
+        temperatureLabel.numberOfLines = 0
+        temperatureLabel.textAlignment = .center
+        temperatureLabel.textColor = .white
+        //CelsiusLabel
+        celsiusSymbolLabel.text = "°C"
+        celsiusSymbolLabel.font = UIFont(name: "Cabin-Bold", size: 40)
+        celsiusSymbolLabel.numberOfLines = 0
+        celsiusSymbolLabel.textAlignment = .center
+        celsiusSymbolLabel.textColor = .white
+        //EnvironmentLabel
+        environmentLabel.text = "Cloudy"
+        environmentLabel.font = UIFont(name: "Cabin-Bold", size: 34)
+        environmentLabel.numberOfLines = 0
+        environmentLabel.textAlignment = .center
+        environmentLabel.textColor = .white
         
         //Button
         let attributedText = NSMutableAttributedString(string: "Get Forecast", attributes: [
@@ -68,25 +95,48 @@ extension iForeCastViewController {
     
     //MARK: - Layout
     private func layout() {
-        topImageView.translatesAutoresizingMaskIntoConstraints = false
-        cityNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        locationButton.translatesAutoresizingMaskIntoConstraints = false
+        topStackView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        locationImageView.translatesAutoresizingMaskIntoConstraints = false
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        celsiusSymbolLabel.translatesAutoresizingMaskIntoConstraints = false
+        environmentLabel.translatesAutoresizingMaskIntoConstraints = false
+      
+        view.addSubview(backgroundView)
+        view.addSubview(locationImageView)
+        view.addSubview(topStackView)
+        view.addSubview(temperatureLabel)
+        view.addSubview(celsiusSymbolLabel)
+        view.addSubview(environmentLabel)
         
-        view.addSubview(topImageView)
-        view.addSubview(cityNameTextField)
-        view.addSubview(locationButton)
+        topStackView.addArrangedSubview(cityNameTextField)
+        topStackView.addArrangedSubview(locationButton)
+       
+      
         
         NSLayoutConstraint.activate([
-            topImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            topImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            cityNameTextField.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 7),
-            cityNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            locationImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            locationImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            topStackView.topAnchor.constraint(equalTo: locationImageView.bottomAnchor, constant: 8),
+            topStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            celsiusSymbolLabel.topAnchor.constraint(equalTo: topStackView.bottomAnchor, constant: 32),
+            celsiusSymbolLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 10),
+            
+            temperatureLabel.heightAnchor.constraint(equalToConstant: 150),
+            temperatureLabel.topAnchor.constraint(equalTo: topStackView.bottomAnchor, constant: 32),
+            temperatureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            environmentLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
+            environmentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             cityNameTextField.widthAnchor.constraint(equalToConstant: 260),
             cityNameTextField.heightAnchor.constraint(equalToConstant: 30),
-            
-            locationButton.topAnchor.constraint(equalTo: cityNameTextField.bottomAnchor, constant: 12),
-            locationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             locationButton.widthAnchor.constraint(equalToConstant: 260)
         ])
     }
@@ -151,14 +201,14 @@ extension iForeCastViewController {
     //animation
     private func animateLocationIcon(duration: Double) {
         UIView.animate(withDuration: duration) {
-            self.topImageView.transform = CGAffineTransform(rotationAngle: .pi)
+            self.locationImageView.transform = CGAffineTransform(rotationAngle: .pi)
         }
         UIView.animate(
             withDuration: duration,
             delay: 0.0,
             options: UIView.AnimationOptions.curveEaseIn
         ) {
-            self.topImageView.transform = CGAffineTransform(rotationAngle: 2 * .pi)
+            self.locationImageView.transform = CGAffineTransform(rotationAngle: 2 * .pi)
         }
     }
     
