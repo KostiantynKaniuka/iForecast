@@ -92,14 +92,14 @@ extension iForeCastViewController {
     }
     
     private func makeTemperatureText(with temperature: String) -> NSAttributedString {
-         var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
-         boldTextAttributes[.foregroundColor] = UIColor.label
-         boldTextAttributes[.font] = UIFont.boldSystemFont(ofSize: 161)
-         var plainTextAttributes = [NSAttributedString.Key: AnyObject]()
-         plainTextAttributes[.font] = UIFont.systemFont(ofSize: 80)
-         let text = NSMutableAttributedString(string: temperature, attributes: boldTextAttributes)
-         return text
-     }
+        var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
+        boldTextAttributes[.foregroundColor] = UIColor.label
+        boldTextAttributes[.font] = UIFont.boldSystemFont(ofSize: 161)
+        var plainTextAttributes = [NSAttributedString.Key: AnyObject]()
+        plainTextAttributes[.font] = UIFont.systemFont(ofSize: 80)
+        let text = NSMutableAttributedString(string: temperature, attributes: boldTextAttributes)
+        return text
+    }
     
     //MARK: - Layout
     private func layout() {
@@ -148,7 +148,7 @@ extension iForeCastViewController {
             cityNameTextField.widthAnchor.constraint(equalToConstant: 260),
             cityNameTextField.heightAnchor.constraint(equalToConstant: 30),
             locationButton.widthAnchor.constraint(equalToConstant: 260),
-            conditionImageView.heightAnchor.constraint(equalToConstant: 150),
+            conditionImageView.heightAnchor.constraint(equalToConstant: 180),
             conditionImageView.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
@@ -200,22 +200,20 @@ extension iForeCastViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let city = cityNameTextField.text {
-                  print(city)
-                  //weatherService.fetchWeather(cityName: city)
-              }
-              cityNameTextField.text = ""
-          }
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if let city = cityNameTextField.text {
+//            print(city)
+//            //weatherService.fetchWeather(cityName: city)
+//        }
+//        cityNameTextField.text = ""
+//    }
 }
 
 //MARK: - Actions
 extension iForeCastViewController {
     
     @objc func locationServicesActivation(sender: UIButton) {
-        for _ in 1...10 {
-            animateLocationIcon(duration: 5)
-        }
+            animateLocationIcon(duration: 1)
     }
     
     //animation
