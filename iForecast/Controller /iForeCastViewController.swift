@@ -183,7 +183,6 @@ extension iForeCastViewController: CLLocationManagerDelegate {
             let lat = location.coordinate.latitude
             let long = location.coordinate.longitude
             print("lat: \(lat) long: \(long)")
-            //weatherService.fetchWeather(cityName: cityNameTextField.text ?? "")
         }
     }
     
@@ -196,17 +195,14 @@ extension iForeCastViewController: CLLocationManagerDelegate {
 extension iForeCastViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if cityNameTextField.text == "" {
+            locationButton.isEnabled = false
+        } else {
+            locationButton.isEnabled = true
+        }
         cityNameTextField.endEditing(true)
         return true
     }
-    
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if let city = cityNameTextField.text {
-//            print(city)
-//            //weatherService.fetchWeather(cityName: city)
-//        }
-//        cityNameTextField.text = ""
-//    }
 }
 
 //MARK: - Actions
