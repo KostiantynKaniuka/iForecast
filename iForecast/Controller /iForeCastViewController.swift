@@ -13,6 +13,7 @@ final class iForeCastViewController: UIViewController {
     private let locationImageView = UIImageView()
     private let cityNameTextField = UITextField()
     private let locationButton = UIButton()
+    private let conditionImageView = UIImageView()
     private let locationManager = CLLocationManager()
     private let temperatureLabel = UILabel()
     private let celsiusSymbolLabel = UILabel()
@@ -20,7 +21,7 @@ final class iForeCastViewController: UIViewController {
     private let topStackView = UIStackView()
     private let backgroundView = Gradient()
     var weatherService = WeatherService()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -43,6 +44,8 @@ extension iForeCastViewController {
     //MARK: - Style
     private func style() {
         locationImageView.image = UIImage(named: "Locator")
+        conditionImageView.image = UIImage(systemName: "cloud")
+        conditionImageView.tintColor = .white
         //StackView
         topStackView.axis = .vertical
         topStackView.alignment = .fill
@@ -95,24 +98,24 @@ extension iForeCastViewController {
     
     //MARK: - Layout
     private func layout() {
+        conditionImageView.translatesAutoresizingMaskIntoConstraints = false
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         celsiusSymbolLabel.translatesAutoresizingMaskIntoConstraints = false
         environmentLabel.translatesAutoresizingMaskIntoConstraints = false
-      
-        view.addSubview(backgroundView)
-        view.addSubview(locationImageView)
-        view.addSubview(topStackView)
-        view.addSubview(temperatureLabel)
-        view.addSubview(celsiusSymbolLabel)
-        view.addSubview(environmentLabel)
+        
+        view.add(subviews: backgroundView,
+                 locationImageView,
+                 topStackView,
+                 temperatureLabel,
+                 celsiusSymbolLabel,
+                 environmentLabel,
+                 conditionImageView)
         
         topStackView.addArrangedSubview(cityNameTextField)
         topStackView.addArrangedSubview(locationButton)
-       
-      
         
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -134,10 +137,14 @@ extension iForeCastViewController {
             
             environmentLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
             environmentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            conditionImageView.topAnchor.constraint(equalTo: environmentLabel.bottomAnchor, constant: 32),
+            conditionImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             cityNameTextField.widthAnchor.constraint(equalToConstant: 260),
             cityNameTextField.heightAnchor.constraint(equalToConstant: 30),
-            locationButton.widthAnchor.constraint(equalToConstant: 260)
+            locationButton.widthAnchor.constraint(equalToConstant: 260),
+            conditionImageView.heightAnchor.constraint(equalToConstant: 150),
+            conditionImageView.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
 }
@@ -146,22 +153,22 @@ extension iForeCastViewController {
 extension iForeCastViewController: WeatherServiceDelegate {
     
     func didFetchWeather(_ weatherService: WeatherService, _ weather: WeatherModel) {
-           updateUI(with: weather)
-       }
+        updateUI(with: weather)
+    }
     
     private func updateUI(with weatherModel: WeatherModel) {
-//           temperatureLabel.attributedText = makeTemperatureText(with: weatherModel.temperatureString)
-//           conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-           cityNameTextField.text = weatherModel.cityName
-       }
+        //           temperatureLabel.attributedText = makeTemperatureText(with: weatherModel.temperatureString)
+        //           conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
+        cityNameTextField.text = weatherModel.cityName
+    }
 }
 
 //MARK: - Location Delegate
 extension iForeCastViewController: CLLocationManagerDelegate {
     
     @objc func locationPressed(_ sender: UIButton) {
-          locationManager.requestLocation()
-      }
+        locationManager.requestLocation()
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
@@ -174,8 +181,8 @@ extension iForeCastViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-           print(error)
-       }
+        print(error)
+    }
 }
 
 //MARK: - CityName text field delegate
@@ -211,5 +218,4 @@ extension iForeCastViewController {
             self.locationImageView.transform = CGAffineTransform(rotationAngle: 2 * .pi)
         }
     }
-    
 }
